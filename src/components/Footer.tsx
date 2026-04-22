@@ -2,15 +2,15 @@ import Link from 'next/link';
 
 export function Footer() {
   return (
-    <footer className="bg-neutral-950 pt-20 pb-10 border-t border-neutral-800">
+    <footer className="bg-[#0b0d12] pt-20 pb-8 border-t border-white/10">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-1 md:col-span-2 space-y-6">
+        <div className="grid md:grid-cols-4 gap-12 mb-14">
+          <div className="col-span-1 md:col-span-2 space-y-5">
             <Link href="/" className="inline-block">
               <img src="https://mygocard.ma/assets/logo-GOCard-White-HZCokBTL.png" alt="GoCard Logo" className="h-8" />
             </Link>
-            <p className="text-neutral-400 font-inter max-w-sm">
-              La carte de visite nouvelle génération. Partagez vos informations de contact instantanément grâce à la technologie NFC.
+            <p className="text-neutral-400 font-inter max-w-sm text-sm leading-relaxed">
+              La carte de visite NFC intelligente la plus premium au monde. Un seul contact pour partager instantanement toute votre identite professionnelle.
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center text-white hover:bg-primary transition-colors">
@@ -23,27 +23,34 @@ export function Footer() {
           </div>
           
           <div>
-            <h4 className="text-white font-bold font-barlow mb-6">Liens Rapides</h4>
-            <ul className="space-y-4 font-inter text-neutral-400">
+            <h4 className="text-white font-bold font-barlow mb-4 uppercase tracking-[0.2em] text-xs">Navigation</h4>
+            <ul className="space-y-3 font-inter text-neutral-400 text-sm">
               <li><Link href="#how-it-works" className="hover:text-white transition-colors">Comment ça marche</Link></li>
               <li><Link href="#pricing" className="hover:text-white transition-colors">Tarifs</Link></li>
               <li><Link href="#reviews" className="hover:text-white transition-colors">Avis</Link></li>
               <li><Link href="#faq" className="hover:text-white transition-colors">FAQ</Link></li>
+              <li><Link href="#contact" className="hover:text-white transition-colors">Nous contacter</Link></li>
             </ul>
           </div>
           
           <div>
-            <h4 className="text-white font-bold font-barlow mb-6">Légal</h4>
-            <ul className="space-y-4 font-inter text-neutral-400">
-              <li><a href="#" className="hover:text-white transition-colors">Mentions légales</a></li>
+            <h4 className="text-white font-bold font-barlow mb-4 uppercase tracking-[0.2em] text-xs">Confiance</h4>
+            <ul className="space-y-3 font-inter text-neutral-400 text-sm">
               <li><a href="#" className="hover:text-white transition-colors">Politique de confidentialité</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">CGV</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Conditions d'utilisation</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">contact@mygocard.ma</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">+212 (0)1 522 524 501</a></li>
             </ul>
           </div>
         </div>
         
-        <div className="pt-8 border-t border-neutral-800 text-center text-neutral-500 font-inter text-sm">
-          <p>&copy; {new Date().getFullYear()} GoCard. Tous droits réservés.</p>
+        <div className="pt-6 border-t border-white/10 text-neutral-500 font-inter text-sm flex flex-col md:flex-row items-center justify-between gap-4">
+          <p>&copy; {new Date().getFullYear()} GoCard Inc. Tous droits reserves.</p>
+          <div className="flex items-center gap-6">
+            <a href="#" className="hover:text-white transition-colors">Politique de confidentialite</a>
+            <a href="#" className="hover:text-white transition-colors">Conditions d'utilisation</a>
+            <a href="#" className="hover:text-white transition-colors">Parametres des cookies</a>
+          </div>
         </div>
       </div>
     </footer>

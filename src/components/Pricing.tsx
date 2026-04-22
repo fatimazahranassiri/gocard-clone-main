@@ -1,78 +1,71 @@
 export function Pricing() {
   const plans = [
     {
-      name: "GoCard Classique",
-      price: "249",
-      currency: "MAD",
-      description: "L'essentiel pour commencer à networker intelligemment.",
+      name: "Basic",
+      price: "190dh",
+      oldPrice: "290 dh",
       features: [
-        "1 Carte NFC GoCard (PVC premium)",
-        "Profil digital personnalisé",
-        "Mise à jour illimitée",
-        "Statistiques de base",
-        "Aucun abonnement mensuel",
+        "Couleurs personnalisees - Noir, Blanc ou Argent",
+        "Votre logo grave au laser sur la carte",
+        "Page de profil en marque blanche",
+        "Activation double NFC + QR code",
+        "Blocs sociaux et liens illimites",
+        "Analyses avancees + capture de leads",
+        "Production et livraison prioritaires",
       ],
       isPopular: false,
     },
     {
-      name: "GoCard Pro",
-      price: "349",
-      currency: "MAD",
-      description: "Pour les professionnels exigeants avec des besoins avancés.",
+      name: "Personnalisee",
+      price: "290dh",
+      oldPrice: "370 dh",
       features: [
-        "1 Carte NFC GoCard (Métal/Bois)",
-        "Profil digital complet",
-        "Capture de leads",
-        "Statistiques avancées",
-        "Aucun abonnement mensuel",
-        "Support prioritaire",
+        "Couleurs personnalisees - Noir, Blanc ou Argent",
+        "Votre logo grave au laser sur la carte",
+        "Page de profil en marque blanche",
+        "Activation double NFC + QR code",
+        "Blocs sociaux et liens illimites",
+        "Analyses avancees + capture de leads",
+        "Production et livraison prioritaires",
       ],
       isPopular: true,
     }
   ];
 
   return (
-    <section id="pricing" className="py-24 bg-neutral-900">
+    <section id="pricing" className="py-24 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 space-y-4">
-          <p className="text-primary/70 font-semibold tracking-wider uppercase text-sm font-inter">Tarifs</p>
-          <h2 className="text-4xl md:text-5xl font-bold font-barlow text-white">Choisissez votre carte.</h2>
-          <p className="text-neutral-400 font-inter max-w-2xl mx-auto">
-            Paiement unique. Sans engagement. Profitez de votre GoCard à vie.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {plans.map((plan, index) => (
             <div 
               key={index} 
-              className={`relative p-8 rounded-3xl flex flex-col ${
+              className={`relative p-6 rounded-3xl flex flex-col border ${
                 plan.isPopular 
-                  ? 'bg-gradient-to-b from-neutral-800 to-neutral-900 border-2 border-primary/50 shadow-2xl scale-105 z-10' 
-                  : 'bg-neutral-800/50 border border-neutral-700 hover:border-neutral-600 transition-colors'
+                  ? 'bg-gradient-to-b from-neutral-700 to-neutral-900 border-white/40 shadow-2xl z-10' 
+                  : 'bg-gradient-to-b from-neutral-700 to-neutral-900 border-white/30'
               }`}
             >
               {plan.isPopular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-bold tracking-wide">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#2a2d33] border border-white/20 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wide">
                   LE PLUS POPULAIRE
                 </div>
               )}
-              
-              <h3 className="text-2xl font-bold font-barlow text-white mb-2">{plan.name}</h3>
-              <p className="text-neutral-400 font-inter text-sm h-10">{plan.description}</p>
-              
-              <div className="my-8">
-                <span className="text-5xl font-black font-barlow text-white">{plan.price}</span>
-                <span className="text-xl text-neutral-400 font-inter ml-2">{plan.currency}</span>
+
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-5xl font-extrabold font-barlow text-white leading-none">{plan.name}</h3>
+                <div className="text-right">
+                  <p className="text-5xl font-extrabold font-barlow text-white leading-none">{plan.price}</p>
+                  <p className="text-sm text-neutral-200 bg-white rounded px-1 inline-block mt-1 leading-none">{plan.oldPrice}</p>
+                </div>
               </div>
 
-              <ul className="space-y-4 flex-1 mb-8">
+              <div className="h-44 rounded-xl border border-white/20 bg-black/45 mb-6" />
+
+              <ul className="space-y-3 flex-1 mb-6">
                 {plan.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-neutral-300 font-inter">{feature}</span>
+                  <li key={idx} className="flex items-start gap-2">
+                    <span className="text-neutral-300 leading-6">+</span>
+                    <span className="text-neutral-300 font-inter text-sm">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -85,12 +78,12 @@ export function Pricing() {
                     contactSection.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className={`w-full py-4 rounded-xl font-bold text-lg transition-transform hover:scale-[1.02] ${
+                className={`w-full py-3.5 rounded-full font-bold text-2xl transition-transform hover:scale-[1.01] ${
                 plan.isPopular 
-                  ? 'bg-white text-black' 
-                  : 'bg-neutral-700 text-white hover:bg-neutral-600'
+                  ? 'bg-[#2d2f36] text-white border border-white/20' 
+                  : 'bg-white text-[#222]'
               }`}>
-                Commander
+                {plan.isPopular ? "Personnalisez votre carte" : "Acheter Basic"}
               </button>
             </div>
           ))}

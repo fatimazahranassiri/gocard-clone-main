@@ -24,13 +24,16 @@ export function Reviews() {
     <section id="reviews" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 space-y-4">
-          <p className="text-primary/70 font-semibold tracking-wider uppercase text-sm font-inter">Ils nous font confiance</p>
-          <h2 className="text-4xl md:text-5xl font-bold font-barlow text-foreground">Ils ont scanné. Ils ont adoré.</h2>
+          <p className="text-primary/70 font-semibold tracking-[0.25em] uppercase text-xs font-inter">Ils nous font confiance</p>
+          <h2 className="text-4xl md:text-6xl font-extrabold font-barlow text-foreground">Ils ont scanne. Ils ont reussi.</h2>
+          <p className="text-muted-foreground font-inter max-w-xl mx-auto">
+            Rejoignez des milliers de professionnels qui ont ameliore leur facon de creer des contacts.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {reviews.map((review, index) => (
-            <div key={index} className="p-8 rounded-2xl bg-secondary/30 border border-border/50">
+            <div key={index} className="p-8 rounded-2xl bg-[#171920] border border-white/10">
               <div className="flex gap-1 mb-6">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">

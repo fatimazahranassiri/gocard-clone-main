@@ -6,20 +6,20 @@ import { cn } from "@/lib/utils";
 
 const faqs = [
   {
-    question: "Comment fonctionne la carte NFC ?",
-    answer: "La carte contient une puce NFC. En l'approchant d'un smartphone compatible (la majorité des téléphones récents), vos informations sont instantanément transmises au téléphone, sans avoir besoin d'installer d'application."
+    question: "L'autre personne a-t-elle besoin d'une application ?",
+    answer: "Non. GoCard utilise la technologie NFC integree a 99 % des smartphones modernes. La personne touche votre carte et votre profil s'ouvre instantanement dans son navigateur."
   },
   {
-    question: "Dois-je payer un abonnement mensuel ?",
-    answer: "Non, chez GoCard le paiement est unique. Vous achetez votre carte une seule fois et vous bénéficiez de votre profil digital à vie."
+    question: "Puis-je modifier mon profil apres avoir partage ma carte ?",
+    answer: "Oui. Toutes vos informations se mettent a jour en temps reel, sans changer la carte."
   },
   {
-    question: "Que se passe-t-il si je change de numéro ou d'entreprise ?",
-    answer: "Vous pouvez modifier toutes vos informations (numéro, email, réseaux sociaux, entreprise) à tout moment et de manière illimitée depuis votre espace personnel."
+    question: "Livrez-vous a l'international ?",
+    answer: "Oui, nous livrons au Maroc et a l'international selon votre adresse de livraison."
   },
   {
-    question: "Est-ce que ça marche avec tous les téléphones ?",
-    answer: "La technologie NFC fonctionne avec tous les iPhone depuis le modèle XS et la quasi-totalité des téléphones Android récents. Pour les anciens modèles, un QR code est imprimé au dos de la carte."
+    question: "Puis-je ajouter le logo et les couleurs de mon entreprise ?",
+    answer: "Absolument. Nous proposons des options de personnalisation avec gravure et identite visuelle."
   }
 ];
 
@@ -27,13 +27,13 @@ export function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-24 bg-secondary/20">
-      <div className="container mx-auto px-4 max-w-3xl">
+    <section id="faq" className="py-24 bg-background">
+      <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-16 space-y-4">
-          <p className="text-primary/70 font-semibold tracking-wider uppercase text-sm font-inter">Questions</p>
-          <h2 className="text-4xl md:text-5xl font-bold font-barlow text-foreground">Réponses claires.</h2>
-          <p className="text-muted-foreground font-inter">
-            Tout ce que vous devez savoir sur GoCard.
+          <p className="text-primary/70 font-semibold tracking-[0.25em] uppercase text-xs font-inter">Questions</p>
+          <h2 className="text-4xl md:text-6xl font-extrabold font-barlow text-foreground">Reponses claires.</h2>
+          <p className="text-muted-foreground font-inter max-w-xl mx-auto">
+            Tout ce que vous devez savoir pour passer au niveau superieur dans votre networking.
           </p>
         </div>
 
@@ -43,15 +43,15 @@ export function Faq() {
             return (
               <div 
                 key={index} 
-                className="border border-border/50 bg-background rounded-2xl overflow-hidden transition-all duration-200"
+                className="border border-white/10 bg-[#191b20] rounded-xl overflow-hidden transition-all duration-200"
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full flex items-center justify-between p-6 text-left"
+                  className="w-full flex items-center justify-between p-5 text-left"
                 >
-                  <span className="font-bold font-barlow text-lg text-foreground">{faq.question}</span>
+                  <span className="font-semibold font-barlow text-2xl text-foreground">{faq.question}</span>
                   <ChevronDown 
-                    className={cn("w-5 h-5 text-muted-foreground transition-transform duration-200", isOpen && "rotate-180")} 
+                    className={cn("w-6 h-6 text-muted-foreground transition-transform duration-200", isOpen && "rotate-180")} 
                   />
                 </button>
                 
@@ -62,7 +62,7 @@ export function Faq() {
                   )}
                 >
                   <div className="overflow-hidden">
-                    <p className="p-6 pt-0 text-muted-foreground font-inter leading-relaxed">
+                    <p className="px-5 pb-5 pt-0 text-muted-foreground font-inter leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
