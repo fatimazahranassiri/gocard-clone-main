@@ -77,7 +77,15 @@ export function Pricing() {
                 ))}
               </ul>
 
-              <button className={`w-full py-4 rounded-xl font-bold text-lg transition-transform hover:scale-[1.02] ${
+              <button 
+                onClick={() => {
+                  // Scroll to contact form
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className={`w-full py-4 rounded-xl font-bold text-lg transition-transform hover:scale-[1.02] ${
                 plan.isPopular 
                   ? 'bg-white text-black' 
                   : 'bg-neutral-700 text-white hover:bg-neutral-600'
