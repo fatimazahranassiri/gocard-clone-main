@@ -1,4 +1,10 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 export function Pricing() {
+  const router = useRouter();
+
   const plans = [
     {
       name: "Basic",
@@ -72,11 +78,11 @@ export function Pricing() {
 
               <button 
                 onClick={() => {
-                  // Scroll to contact form
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  if (!plan.isPopular) {
+                    router.push("/acheter-basic");
+                    return;
                   }
+                  router.push("/personnaliser-carte");
                 }}
                 className={`w-full py-3.5 rounded-full font-bold text-2xl transition-transform hover:scale-[1.01] ${
                 plan.isPopular 

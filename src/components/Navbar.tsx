@@ -16,9 +16,9 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center pl-12">
-          <button className="bg-[#191b20] border border-white/20 text-white px-7 py-2.5 rounded-full font-semibold text-sm hover:bg-[#232632] transition-colors">
+          <Link href="#contact" className="bg-[#191b20] border border-white/20 text-white px-7 py-2.5 rounded-full font-semibold text-sm hover:bg-[#232632] transition-colors">
             Contactez-nous
-          </button>
+          </Link>
         </div>
       </div>
     </nav>

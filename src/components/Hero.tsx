@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ThreeDCard } from "./ui/3d-card";
 
 export function Hero() {
@@ -26,12 +27,12 @@ export function Hero() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
-            <button className="bg-white text-black px-8 py-3.5 rounded-full font-bold text-base hover:scale-105 transition-transform">
+            <Link href="#pricing" className="inline-flex items-center justify-center bg-white text-black px-8 py-3.5 rounded-full font-bold text-base hover:scale-105 transition-transform">
               Obtenez votre carte
-            </button>
-            <button className="bg-[#222222] border border-white/5 text-white px-8 py-3.5 rounded-full font-bold text-base hover:bg-neutral-800 transition-colors">
+            </Link>
+            <Link href="#how-it-works" className="inline-flex items-center justify-center bg-[#222222] border border-white/5 text-white px-8 py-3.5 rounded-full font-bold text-base hover:bg-neutral-800 transition-colors">
               Comment ça marche
-            </button>
+            </Link>
           </div>
 
           {/* Stats Section */}

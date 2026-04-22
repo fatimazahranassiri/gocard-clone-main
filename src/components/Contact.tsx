@@ -3,13 +3,17 @@
 import { useState } from "react";
 
 export function Contact() {
+  const inputClass =
+    "w-full bg-black border border-white/15 rounded-lg px-4 h-13 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white/20 transition-shadow";
+  const selectClass =
+    "w-full appearance-none bg-black border border-white/15 rounded-lg px-4 h-13 text-foreground focus:outline-none focus:ring-2 focus:ring-white/20 transition-shadow";
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     profile: "Particulier",
     reason: "Entreprise",
-    subject: "",
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -27,7 +31,7 @@ export function Contact() {
     e.preventDefault();
     
     // Validation
-    if (!formData.name || !formData.email || !formData.phone || !formData.subject || !formData.message) {
+    if (!formData.name || !formData.email || !formData.phone || !formData.message) {
       setSubmitStatus({
         type: 'error',
         message: 'Veuillez remplir tous les champs.'
@@ -73,7 +77,6 @@ export function Contact() {
           phone: "",
           profile: "Particulier",
           reason: "Entreprise",
-          subject: "",
           message: ""
         });
         setTimeout(() => setSubmitStatus(null), 5000);
@@ -114,96 +117,102 @@ export function Contact() {
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-sm font-semibold font-inter text-foreground">Nom complet : *</label>
+                <label className="text-[15px] font-semibold font-inter text-foreground">Nom complet : *</label>
                 <input 
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-black border border-white/15 rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white/20 transition-shadow"
+                  className={inputClass}
                   placeholder="Votre nom complet"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-semibold font-inter text-foreground">Email : *</label>
+                <label className="text-[15px] font-semibold font-inter text-foreground">Email : *</label>
                 <input 
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full bg-black border border-white/15 rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white/20 transition-shadow"
+                  className={inputClass}
                   placeholder="Votre email"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-semibold font-inter text-foreground">Telephone (ex. +212 6 12 34 56 78) : *</label>
-              <input
-                type="text"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full bg-black border border-white/15 rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white/20 transition-shadow"
-                placeholder="+212"
-              />
+              <label className="text-[15px] font-semibold font-inter text-foreground">Telephone (ex. +212 6 12 34 56 78) : *</label>
+              <div className="flex items-center bg-black border border-white/15 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-white/20">
+                <button
+                  type="button"
+                  className="h-13 px-3 border-r border-white/10 text-sm text-foreground flex items-center gap-2"
+                  aria-label="Choisir indicatif"
+                >
+                  <span className="text-base">🇲🇦</span>
+                  <span className="text-xs text-neutral-400">▼</span>
+                </button>
+                <span className="px-3 h-13 flex items-center text-foreground border-r border-white/10">+212</span>
+                <input
+                  type="text"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full h-13 bg-transparent px-4 text-foreground placeholder:text-muted-foreground focus:outline-none"
+                  placeholder="6 12 34 56 78"
+                />
+              </div>
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-semibold font-inter text-foreground">Vous etes : *</label>
-              <select
-                name="profile"
-                value={formData.profile}
-                onChange={handleChange}
-                className="w-full bg-black border border-white/15 rounded-lg px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-white/20 transition-shadow"
-              >
-                <option>Particulier</option>
-                <option>Professionnel</option>
-                <option>Entreprise</option>
-              </select>
+              <label className="text-[15px] font-semibold font-inter text-foreground">Vous etes : *</label>
+              <div className="relative">
+                <select
+                  name="profile"
+                  value={formData.profile}
+                  onChange={handleChange}
+                  className={selectClass}
+                >
+                  <option>Particulier</option>
+                  <option>Professionnel</option>
+                  <option>Entreprise</option>
+                </select>
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none">⌄</span>
+              </div>
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-semibold font-inter text-foreground">Motif:</label>
-              <select
-                name="reason"
-                value={formData.reason}
-                onChange={handleChange}
-                className="w-full bg-black border border-white/15 rounded-lg px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-white/20 transition-shadow"
-              >
-                <option>Entreprise</option>
-                <option>Commande individuelle</option>
-                <option>Support</option>
-              </select>
+              <label className="text-[15px] font-semibold font-inter text-foreground">Motif:</label>
+              <div className="relative">
+                <select
+                  name="reason"
+                  value={formData.reason}
+                  onChange={handleChange}
+                  className={selectClass}
+                >
+                  <option>Entreprise</option>
+                  <option>Commande individuelle</option>
+                  <option>Support</option>
+                </select>
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none">⌄</span>
+              </div>
             </div>
             
             <div className="space-y-2">
-              <label className="text-sm font-semibold font-inter text-foreground">Sujet :</label>
-              <input 
-                type="text"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                className="w-full bg-black border border-white/15 rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white/20 transition-shadow"
-                placeholder="Objet de votre demande"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-semibold font-inter text-foreground">Message : *</label>
+              <label className="text-[15px] font-semibold font-inter text-foreground">Message : *</label>
               <textarea 
-                rows={5}
+                rows={4}
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full bg-black border border-white/15 rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-white/20 transition-shadow resize-none"
-              ></textarea>
+                className={inputClass + " h-auto py-3 resize-none"}
+                placeholder=""
+              />
             </div>
 
             <button 
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#d1d5db] text-[#22252b] font-bold py-4 rounded-full text-4xl hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-[#d1d5db] text-[#22252b] font-bold h-14 rounded-full text-2xl leading-none hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
             </button>
